@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        class Clock extends React.Component {
+            constructor(props) {
+                super(props);
+                // 1.状态state，改变一次，渲染一次UI
+                this.state = { date: new Date() }
+            }
+
+            // 当Clock的输出（ReactDOM.render()）插入到 DOM 中时调用
+            componentDidMount() {
+                this.timerID = setInterval(
+                    () => this.tick(),
+                    1000
+                );
+            }
+            // 一旦 Clock 组件被从 DOM 中移除，React 会调用 componentWillUnmount() 这个钩子函数，定时器也就会被清除(卸载)
+            componentWillUnmount() {
+                clearInterval(this.timerID);
+            }
+
+            // 通过使用包含当前时间的对象调用setState()来调度UI更新（state改变，就调用render() ）
+            tick() {
+                this.setState({
+                    date: new Date()
+                });
+            }
+
+            // JSX语法
+            render() {
+                return (
+                    <div>
+                        <h1>hello World!</h1>
+                        <p>当前时间：{this.state.date.toLocaleTimeString()}</p>
+                    </div>
+                )
+            }
+        }
+        // 渲染DOM
+        ReactDOM.render(
+            <Clock />,
+            document.getElementById('example')
+        )
+    </script>
+
+</body>
+
+</html>

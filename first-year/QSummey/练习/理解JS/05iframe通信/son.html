@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    测试子页面
+    <div id="send">点击发送</div>
+</body>
+<script>
+    var dom = document.getElementById('send')
+    dom.addEventListener("touchend", sendData)
+
+    function sendData() {
+      console.log('点击发送');
+      window.parent.postMessage({ sendData: '传给父页面的数据' }, '*');
+    }
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React 实例</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+
+    <script type="text/babel">
+        const numbers = [1, 2, 3, 4, 5];
+
+        // 先封装一个列表组件
+        function NumberList(props) {
+            const numbers = props.numbers;
+
+            const listItems=numbers.map((number)=>{
+                // key：唯一标识，字符串形式或数字
+                // Keys 可以在 DOM 中的某些元素被增加或删除的时候帮助 React 识别哪些元素发生了变化
+                return <li key={number.toString()}>{number}</li>
+            });
+
+            return (
+                // 允许在模板中插入数组
+                <ul>{listItems}</ul>
+            );
+        }
+
+        // 渲染这个列表组件
+        ReactDOM.render(
+            <NumberList numbers={numbers} />,
+            document.getElementById("example")
+        )
+    </script>
+
+</body>
+
+</html>

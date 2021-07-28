@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+
+    <script type="text/babel">
+        // React推荐使用内联样式，React 会在指定元素数字后自动添加 px
+        const myStyle={
+            fontSize:12,
+            color:'red'
+        }
+        const i = 1;
+        const element = <h1 style={myStyle}>{i == 1 ? 'true' : 'false'}</h1>;
+        ReactDOM.render(
+            element,
+            document.getElementById('example')
+        );
+    </script>
+</body>

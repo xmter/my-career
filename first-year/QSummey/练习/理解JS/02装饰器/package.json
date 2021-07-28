@@ -1,0 +1,15 @@
+{
+  "name": "aa",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-proposal-decorators": "^7.13.5",
+    "@babel/preset-env": "^7.13.12"
+  },
+  "scripts": {
+    "build": "babel src -d build"
+  }
+}

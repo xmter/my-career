@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="example"></div>
+    <!-- <script type="text/babel">
+        function Name(props) {
+            return <h1>网站名称：{props.name}</h1>;
+        }
+        function Url(props) {
+            return <h1>网站地址：{props.url}</h1>;
+        }
+        function Nickname(props) {
+            return <h1>网站小名：{props.nickname}</h1>;
+        }
+        function App() {
+            return (
+                <div>
+                    <Name name="菜鸟教程" />
+                    <Url url="http://www.runoob.com" />
+                    <Nickname nickname="Runoob" />
+                </div>
+            );
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('example')
+        );
+    </script> -->
+    <script type="text/babel">
+        class Name extends React.Component {
+            render() {
+                return (
+                    <h1>网站名称：{this.props.name}</h1>
+                )
+            }
+        }
+        class Url extends React.Component {
+            render() {
+                return (
+                    <h1>网站地址：{this.props.url}</h1>
+                )
+            }
+        }
+        class NickName extends React.Component {
+            render() {
+                return (
+                    <h1>网站昵称：{this.props.nickName}</h1>
+                )
+            }
+        }
+
+        // App 是一个复合组件
+        class App extends React.Component {
+            render() {
+                return ( // 注意：必须包裹在一个根元素里面
+                    <div>
+                        <Name name={"百度搜索"} />,
+                        <Url url={"www.baidu.com"} />,
+                        <NickName nickName={"度娘"} />
+                    </div>
+                )
+            }
+        }
+
+        const element = <App />
+        ReactDOM.render(
+            element,
+            document.getElementById("example")
+        )
+
+
+    </script>
+
+</body>
+
+</html>

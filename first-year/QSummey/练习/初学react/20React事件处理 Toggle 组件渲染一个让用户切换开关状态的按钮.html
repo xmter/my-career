@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React 实例</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="example"></div>
+    <script type="text/babel">
+        class Toggle extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { isToggleOn: true };
+
+                // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+                this.handleClick = this.handleClick.bind(this);
+            }
+
+            handleClick() {
+                this.setState((prevState)=>{
+                    // console.log(prevState) //{isToggleOn: true}
+                    return {isToggleOn: !prevState.isToggleOn}
+                })
+            }
+
+            render() {
+                return (
+                    // {}里面是this.handleClick，而非handleClick，是因为类中方法调用，如果是实例来去调用，this就是实例
+                    // 但是这里不是实例调用，为了确保类中方法的this是实例，在构造函数中先bind绑定
+                    // 如果不那样操作，class类中，由于是严格模式，所以这个方法直接调用里面的this就是undefined
+                    <button onClick={this.handleClick}>
+                        {this.state.isToggleOn ? 'ON' : 'OFF'}
+                    </button>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <Toggle />,
+            document.getElementById('example')
+        );
+    </script>
+
+</body>
+
+</html>

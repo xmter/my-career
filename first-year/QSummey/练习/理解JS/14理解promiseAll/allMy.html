@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        // var a = document.getElementsByTagName("div");
+        // console.log(a);
+
+        // function h () {
+        //     console.log(arguments);
+        // }
+
+        // h(1);
+
+        const p1 = Promise.resolve('p1');
+        const p2 = 42;
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(resolve, 3000, 'p3');
+        });
+        const p4 = 100;
+        // const temp = Promise.reject('temp');
+
+
+        // Promise.a = 1;
+        Promise.all = function(iterators) {
+            // const promises = Array.from(iterators);
+            const  promises = iterators;
+            if (!iterators[Symbol.iterator]) {
+                throw Error(`${typeof iterators} is not iterable (cannot read property Symbol(Symbol.iterator))`);
+            }
+            const len = promises.length;
+
+            if (!len) {
+                return Promise.resolve(promises);
+            }
+
+            let count = 0;
+            let resultList = [];
+            return new Promise((resolve, reject) => {
+                promises.forEach((p, index) => {
+                    // console.log('hhhhhhhhh');
+                    Promise.resolve(p)
+                        .then((result) => {
+                            count++;
+                            resultList[index] = result;
+                            // resultList.push(result);
+                            if (count === len) {
+                                resolve(resultList);
+                            }
+                        })
+                        .catch(e => {
+                            reject(e);
+                        })
+                })
+            })
+        };
+
+        // const p = Promise.all(1);
+        // const p = Promise.all([]);
+        const p = Promise.all([p1, p2, p3, p4]);
+        // const p = Promise.all([p1, p2, temp, p3]);
+        // const p = Promise.all({});
+
+        p.
+            then(value => console.log(value)).
+                catch(value => console.log(value));
+
+
+        /**
+         * 0. function Promise () {}
+         * 1. 异步等待 resultList[index] = result; 不能写成 resultList.push(result);
+         * 2.  console.log('hhhhhhhhh'); 可以打印 Promise.all 覆盖 原有的 Promise.all。
+        */
+
+        // 浏览器缓存 https://segmentfault.com/a/1190000017962411
+
+        var arr = [1,2,3];
+
+        // 键
+        // for(a in arr) {
+        //     console.log(a);
+        // }
+
+        // 值
+        // for(a of arr) {
+        //     console.log(a);
+        // }
+
+        var str = 'abc';
+        // for(a in str) {
+        //     console.log(a);
+        // }
+
+        // for(a of str) {
+        //     console.log(a);
+        // }
+        // console.log(Object.keys(str));
+
+        // Object = function () {
+        //     console.log('wqsdcv');
+        // }
+        // console.log(Object);
+    </script>
+</body>
+
+</html>

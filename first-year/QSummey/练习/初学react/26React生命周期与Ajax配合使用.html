@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React 实例</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="example"></div>
+
+    <script type="text/babel">
+
+        class UserGist extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { userName: '', lastGistUrl: '' }
+            }
+            componentDidMount() {
+                this.serverRequest = $.get(this.props.source, (result) => {
+
+                    // console.log(result);
+                    result = result[0];
+
+                    // 在请求回调函数中通过setState修改state,来更新渲染页面
+                    this.setState({
+                        userName: result.owner.login,
+                        lastGistUrl: result.owner.gists_url
+                    })
+                })
+            }
+            componentWillUnmount() {
+                this.serverRequest.abort(); //这个书写不明白
+            }
+            render() {
+                return (
+                    <div>
+                        {this.state.userName}:{this.state.lastGistUrl}
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <UserGist source={'https://api.github.com/users/octocat/gists'} />,
+            document.getElementById('example')
+        )
+    </script>
+
+</body>
+
+</html>

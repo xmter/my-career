@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0Transitional//EN""HTML://www.w3.org/TR/xHTML1/DTD/xHTML1-transitional.dtd">
+<HTMLxmlns="HTML: //www.w3.org/1999/xHTML">
+
+    <head>
+        <meta HTML-equiv="Content-Type" content="text/HTML;charset=gb2312" />
+        <title>单击后编辑文字</title>
+        <style>
+            input.t {
+                border: 1px solid #fff;
+            }
+
+            input.s {
+                border: 1px solid #369;
+            }
+        </style>
+    </head>
+
+    <body>
+        <input class="t" id="test" readonly value="点击我看看效果" />
+        <input type="submit" value="修改" style="display:none;" id="submit" />
+        <script type="text/javascript">
+            var test = document.getElementById("test");
+            var mysubmit = document.getElementById("submit");
+            test.onclick = function () {
+                this.readOnly = false;
+                this.className = "s";
+                mysubmit.style.display = "";
+            }
+            mysubmit.onclick = function () {
+                test.readOnly = true;
+                test.className = "t";
+                this.style.display = "none";
+            }
+
+        </script>
+    </body>
+
+    </HTML>

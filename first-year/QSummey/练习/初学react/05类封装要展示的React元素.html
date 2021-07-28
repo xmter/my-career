@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="example"></div>
+    <script type="text/babel">
+        // 优化方式2：将要展示的React元素封装在一个类
+        class Clock extends React.Component {
+            render() { //注意的是在 render() 方法中，需要使用 this.props 替换 props
+                return (
+                    <div>
+                        <h1>Hello, world!</h1>
+                        <h2>现在是 {this.props.date.toLocaleTimeString()}.</h2>
+                    </div>
+                )
+            }
+        }
+
+        function tick() {
+            ReactDOM.render(
+                <Clock date={new Date()} />,
+                document.getElementById('example')
+            );
+        }
+
+        setInterval(tick, 1000);
+    </script>
+</body>
+
+</html>

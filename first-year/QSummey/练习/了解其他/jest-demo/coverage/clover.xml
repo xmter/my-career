@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1619619747407" clover="3.2.0">
+  <project timestamp="1619619747408" name="All files">
+    <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2" elements="10" coveredelements="6" complexity="0" loc="6" ncloc="6" packages="1" files="2" classes="2"/>
+    <file name="bar.js" path="/Users/bjhl/Documents/tecStudy/Javascript/jest/jest-demo/bar.js">
+      <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="6" count="0" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+    </file>
+    <file name="math.js" path="/Users/bjhl/Documents/tecStudy/Javascript/jest/jest-demo/math.js">
+      <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="6" count="0" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/prop-types/15.6.1/prop-types.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="example"></div>
+    <script type="text/babel">
+
+        let title='我是标题';
+        class MyTitle extends React.Component{
+            render(){
+                return (
+                    <h1>hello,{this.props.title}</h1>
+                );
+            }
+        }
+
+        // props验证
+        MyTitle.propTypes={
+            title: PropTypes.string //如果类型写错，会在控制台有警告，但是页面正常显示
+        }
+
+        ReactDOM.render(
+            <MyTitle title={title}/>,
+            document.getElementById("example")
+        )
+    </script>
+</body>
+
+</html>

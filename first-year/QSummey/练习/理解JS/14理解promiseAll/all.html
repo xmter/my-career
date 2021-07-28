@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p1 = Promise.resolve('p1');
+        let p2 = 42;
+        let p3 = new Promise((resolve, reject) => {
+            setTimeout(resolve, 3000, 'p3');
+        });
+        let temp = Promise.reject('temp');
+        // p1.then( value => console.log(value));
+
+        // let p = Promise.all([p1, p2, p3]);
+        let p = Promise.all([p1, p2, temp, p3]);
+
+        // 立即变为失败
+        // let p = Promise.all([p1, p2, p3, temp]);
+
+        p.
+            then(value => console.log(value)).
+                catch(value => console.log(value));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        // const element = <h1>Hello, world!</h1>;
+        // 上一行既不是字符串也不是 HTML的语法,被称为 JSX。
+        // React 中使用 JSX 来描述用户界面
+
+        // JSX语法的练习
+        const element = <div>
+            <h1>菜鸟教程</h1>
+            <h2>欢迎学习 React</h2>
+            <p data-myattribute="somevalue">这是一个很不错的 JavaScript 库!</p>
+        </div>;
+        ReactDOM.render(
+            element,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>父页面</div>
+
+    <div style="width:200px;height:200px;border:1px solid #333;">
+      <iframe
+        src="./son.html"
+        title="iframe example 1"
+        style="width:100%;height:100%;"
+        frameborder="0" border="0"
+        marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
+    </div>
+</body>
+<script>
+    window.onmessage = (e) => {
+        console.log('传递的参数', e.data);
+        if (e.data.sendData) {
+        console.log('sendData的值', e.data.sendData);
+        }
+    }
+</script>
+</html>

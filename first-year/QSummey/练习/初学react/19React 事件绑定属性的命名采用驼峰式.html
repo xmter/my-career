@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/prop-types/15.6.1/prop-types.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="example"></div>
+    <script type="text/babel">
+        // 写一个组件，组件命名首字母大写
+        function ActionLink() {
+            function handleClick(e) {
+                //e 为事件集合
+                e.preventDefault();// 阻止事件的默认行为
+                console.log('点击成功')
+            }
+            return (
+                /* 事件属性命用驼峰onClick，而不是onclick */
+                // {}里面是函数名handleClick，而不是函数调用handleClick()
+                <a href="#" onClick={handleClick}>点我</a>
+            )
+        }
+
+        // 将组件渲染到页面
+        ReactDOM.render(
+            <ActionLink />,
+            document.getElementById('example')
+        )
+    </script>
+</body>
+
+</html>
