@@ -50,83 +50,83 @@
 
 
 // 3.斐波那契数列 （优化版）
-// let num = 0
+let num = 0
 
-// function fibonacci(n) {
-//     num++;
-//     return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
-// }
+function fibonacci(n) {
+    num++;
+    return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
+}
 
-// function memorize(fn) {
-//     const cache = Object.create(null);
-//     return function (...args) {
-//       const _args = JSON.stringify(args);
-//       console.log(_args);
-//       return cache[_args] || (cache[_args] = fn.apply(this, args));
-//     };
-// };
-// fibonacci = memorize(fibonacci)
+function memorize(fn) {
+    const cache = Object.create(null);
+    return function (...args) {
+      const _args = JSON.stringify(args);
+      console.log(_args);
+      return cache[_args] || (cache[_args] = fn.apply(this, args));
+    };0
+};
+fibonacci = memorize(fibonacci)
 
 // console.log(fibonacci(10))
 // console.log('num:', num);
 // 1, 1, 2, 3, 5, 8
 
 // 4. 防抖
-// function debounce(fn, time) {
-//     let timer = null;
-//     return function (...args) {
-//         if (timer) {
-//             clearTimeout(timer);
-//         }
-//         timer = setTimeout(() => {
-//             fn.apply(this, args)
-//         }, time)
-//     }
-// }
+function debounce(fn, time) {
+    let timer = null;
+    return function (...args) {
+        if (timer) {
+            clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+            fn.apply(this, args)
+        }, time)
+    }
+}
 
 // 升级版
-// function debounce(fn, time, immediate) {
-//     let timer = null;
+function debounce(fn, time, immediate) {
+    let timer = null;
 
 
-//     return function (...args) {
-//         if (timer) {
-//             clearTimeout(timer);
-//         }
+    return function (...args) {
+        if (timer) {
+            clearTimeout(timer);
+        }
 
-//         if (immediate) {
-//             let isNow = !timer; // true
+        if (immediate) {
+            let isNow = !timer; // true
 
-//             timer = setTimeout(() => {
-//                 timer = null;
-//             }, wait);
+            if (isNow) {
+                fn.apply(this, args);
+            }
 
-//             if (isNow) {
-//                 fn.apply(this, args);
-//             }
-//         }
-//         else {
-//             timer = setTimeout(() => {
-//                 fn.apply(this, args)
-//             }, time)
-//         }
-//     }
-// }
+            timer = setTimeout(() => {
+                timer = null;
+            }, wait);
+        }
+        else {
+            timer = setTimeout(() => {
+                fn.apply(this, args)
+            }, time)
+        }
+    }
+}
 
 
 // 5.节流
-// function throttle (fn, time) {
-//     let flag = true;
-//     return function (...args) {
-//         if(flag) {
-//             flag = false;
-//             setTimeout(() => {
-//                 flag = true;
-//             }, time)
-//             fn.apply(this, args);
-//         }
-//     }
-// }
+function throttle (fn, time) {
+    let flag = true;
+    return function (...args) {
+        if(flag) {
+            flag = false;
+            setTimeout(() => {
+                flag = true;
+            }, time)
+            fn.apply(this, args);
+        }
+    }
+}
 
 
 // 6. 深拷贝
